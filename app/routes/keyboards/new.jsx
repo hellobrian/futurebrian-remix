@@ -6,6 +6,7 @@ export const loader = async () => {
   if (process.env.NODE_ENV !== "development") {
     return redirect("/");
   }
+  return null;
 };
 
 export const action = async ({ request }) => {

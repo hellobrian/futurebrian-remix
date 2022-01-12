@@ -18,11 +18,6 @@ export let loader = async ({ params }) => {
 
 export const action = async ({ request }) => {
   const form = await request.formData();
-  console.log({
-    id: form.get("id"),
-    name: form.get("name"),
-    slug: slugify(form.get("name")),
-  });
 
   const { error } = await supabase
     .from("keyboard")
