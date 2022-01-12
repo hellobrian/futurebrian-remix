@@ -31,17 +31,21 @@ export default function KeyboardsIndex() {
     <>
       <div>{keyboard.name}</div>
       <pre>{JSON.stringify(keyboard, null, 2)}</pre>
-      <Link to={`/keyboards/${keyboard.slug}/edit`}>edit keyboard</Link>
 
-      <details>
-        <summary>Danger Zone</summary>
+      {process.env.NODE_ENV === "development" && (
+        <>
+          <Link to={`/keyboards/${keyboard.slug}/edit`}>edit keyboard</Link>
+          <details>
+            <summary>Danger Zone</summary>
 
-        <form method="post">
-          <input type="hidden" name="id" value={keyboard.id} />
-          <input type="hidden" name="_method" value="delete" />
-          <button type="submit">Delete</button>
-        </form>
-      </details>
+            <form method="post">
+              <input type="hidden" name="id" value={keyboard.id} />
+              <input type="hidden" name="_method" value="delete" />
+              <button type="submit">Delete</button>
+            </form>
+          </details>
+        </>
+      )}
     </>
   );
 }

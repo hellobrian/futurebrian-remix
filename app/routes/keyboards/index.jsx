@@ -9,11 +9,15 @@ export let loader = async () => {
 
 export default function KeyboardsIndex() {
   let keyboards = useLoaderData();
+
   return (
     <>
       <div>keyboards</div>
       <pre>{JSON.stringify(keyboards, null, 2)}</pre>
-      <Link to="/keyboards/new">add new keyboard</Link>
+
+      {process.env.NODE_ENV === "development" && (
+        <Link to="/keyboards/new">add new keyboard</Link>
+      )}
       <ul>
         {keyboards.map((keyboard) => (
           <li key={keyboard.id}>

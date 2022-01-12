@@ -2,6 +2,12 @@ import { redirect } from "remix";
 import slugify from "slugify";
 import supabase from "../../../api";
 
+export const loader = async () => {
+  if (process.env.NODE_ENV !== "development") {
+    return redirect("/");
+  }
+};
+
 export const action = async ({ request }) => {
   const form = await request.formData();
 

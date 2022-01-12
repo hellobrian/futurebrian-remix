@@ -3,6 +3,9 @@ import slugify from "slugify";
 import supabase from "../../../api";
 
 export let loader = async ({ params }) => {
+  if (process.env.NODE_ENV !== "development") {
+    return redirect("/");
+  }
   let { data: keyboard, error } = await supabase
     .from("keyboard")
     .select("*")
